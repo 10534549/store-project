@@ -1,0 +1,440 @@
+// Imports //
+@import '@/assets/scss/variables.scss';
+
+// Scss //
+
+.body {
+    font-family: $montserrat-regular;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.error-text,
+.hide-text {
+    visibility: hidden;
+}
+
+.error-txt {
+    color: $red;
+    font-size: $font-12;
+}
+
+.showText {
+    visibility: visible;
+    color: $red;
+    font-size: $font-12;
+}
+//colors
+.white {
+    color: $white;
+}
+.orange {
+    color: $orange;
+}
+.red {
+    color: $red;
+}
+.dark-grey {
+    color: $dark-grey;
+}
+.light-grey {
+    color: $light-grey;
+}
+.active-grey {
+    color: $active-grey;
+}
+.light-green {
+    color: $light-green;
+}
+.navy-blue {
+    color: $navy-blue;
+}
+.orange {
+    color: $orange;
+}
+.silver {
+    color: $silver;
+}
+.gold {
+    color: $gold;
+}
+.align-center {
+    align-items: center;
+}
+.padd-lr-15 {
+    padding: 0px 15px;
+}
+
+.bg-white {
+    background: $white;
+}
+.bg-orange {
+    background: $orange;
+}
+.bg-red {
+    background: $red;
+}
+.bg-dark-grey {
+    background: $dark-grey;
+}
+.bg-light-grey {
+    background: $light-grey;
+}
+.bg-active-grey {
+    background: $active-grey;
+}
+.bg-light-green {
+    background: $light-green;
+}
+.bg-navy-blue {
+    background: $navy-blue;
+}
+.bg-orange {
+    background: $orange;
+}
+.bg-silver {
+    background: $silver;
+}
+.bg-gold {
+    background: $gold;
+}
+
+//font size
+.font-10 {
+    font-size: $font-10;
+}
+.font-12 {
+    font-size: $font-12;
+}
+.font-14 {
+    font-size: $font-14;
+}
+.font-16 {
+    font-size: $font-16;
+}
+.font-18 {
+    font-size: $font-18;
+}
+.font-20 {
+    font-size: $font-20;
+}
+.font-22 {
+    font-size: $font-22;
+}
+.font-24 {
+    font-size: $font-24;
+}
+.font-26 {
+    font-size: $font-26;
+}
+.font-28 {
+    font-size: $font-28;
+}
+.font-30 {
+    font-size: $font-30;
+}
+.font-32 {
+    font-size: $font-32;
+}
+.font-34 {
+    font-size: $font-34;
+}
+.font-36 {
+    font-size: $font-36;
+}
+.font-38 {
+    font-size: $font-38;
+}
+.font-40 {
+    font-size: $font-40;
+}
+.font-42 {
+    font-size: $font-42;
+}
+.font-44 {
+    font-size: $font-44;
+}
+.font-46 {
+    font-size: $font-46;
+}
+.font-80 {
+    font-size: $font-80;
+}
+.font-120 {
+    font-size: $font-120;
+}
+.w-20 {
+    width: 20%;
+}
+
+.w-16 {
+    width: 16%;
+}
+.width-100 {
+    width: 100vh;
+}
+
+//font (montserrat and open-sans)
+.montserrat-regular {
+    font-family: $montserrat-regular;
+}
+.montserrat-bold {
+    font-family: $montserrat-bold;
+}
+.montserrat-semi-bold {
+    font-family: $montserrat-semi-bold;
+}
+.open-sans-regular {
+    font-family: $open-sans-regular;
+}
+.open-sans-bold {
+    font-family: $open-sans-bold;
+}
+.open-sans-semi-bold {
+    font-family: $open-sans-semi-bold;
+}
+.futur {
+    font-family: $futur;
+}
+// spinner
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// main content section
+.main-content {
+    padding-left: 0px;
+    background: $white;
+    min-height: 100vh;
+}
+//title section
+.title {
+    color: $navy-blue;
+    font-size: $font-24;
+    font-family: $open-sans-semi-bold;
+}
+//modal-title section
+.modal-title {
+    color: $navy-blue;
+    font-size: $font-20;
+    font-family: $open-sans-bold;
+}
+//date-picker section
+.vdp-datepicker {
+    input {
+        height: calc(1.5em + 0.5rem + 2px);
+        padding: 0.25rem 0.5rem;
+        font-size: $font-12;
+        line-height: 1.5;
+        width: 100%;
+    }
+}
+
+.infinite-status-prompt {
+    display: none;
+}
+
+*:focus {
+    outline: 0;
+    box-shadow: unset;
+}
+
+.custom-file-input:focus ~ .custom-file-label,
+.custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: unset;
+}
+
+.h-200 {
+    height: 200px;
+}
+
+.time-picker {
+    padding: 0;
+    border: 0;
+    width: 100% !important;
+}
+.time-picker .dropdown .hint {
+    text-transform: uppercase;
+    color: #606060;
+}
+
+.time-picker input.display-time {
+    width: 100% !important;
+    height: calc(1.5em + 0.75rem + 2px);
+}
+.time-picker .dropdown,
+.time-picker .dropdown .select-list {
+    width: 100% !important;
+}
+.modal-header {
+    border: none;
+    padding: 5px 1rem;
+
+    .modal-title {
+        color: $black;
+    }
+    button:focus {
+        outline: 0px solid;
+        outline: 0px auto -webkit-focus-ring-color;
+    }
+}
+
+.modal-backdrop {
+    opacity: 0.8;
+}
+.popover-body {
+    .button-section {
+        .popup-btn {
+            border-radius: 15px;
+            font-size: $font-12;
+        }
+        .btn-primary {
+            color: $white;
+            background-color: $navy-blue;
+            border-color: $navy-blue;
+        }
+        .btn-primary:hover {
+            color: $white;
+            background-color: $navy-blue;
+            border-color: $navy-blue;
+        }
+        .btn-outline-primary {
+            border-color: $navy-blue;
+            background-color: $white;
+            color: $navy-blue;
+        }
+        .btn-outline-primary:hover {
+            color: $white;
+            background-color: $navy-blue;
+            border-color: $navy-blue;
+        }
+    }
+}
+
+.padd-top-80 {
+    padding-top: 80px;
+}
+.for-desk {
+    display: none;
+}
+
+.for-mobile {
+    display: block;
+}
+@media only screen and (min-width: 768px) {
+    .padd-top-80 {
+        padding-top: 0px !important;
+    }
+    .for-desk {
+        display: block !important;
+    }
+
+    .for-mob {
+        display: none !important;
+    }
+    .main-content {
+        padding-left: 225px;
+    }
+    .container-section {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.overflow-mob {
+    overflow-x: auto;
+
+    .list-group-item {
+        width: 100vh;
+    }
+
+    .card {
+        background-color: #eee;
+        .card-body {
+            overflow-x: auto;
+            margin: 0.5rem;
+            padding: 0px;
+        }
+    }
+}
+
+.modal-dialog {
+    padding-top: 80px;
+}
+
+@media only screen and (min-width: 768px) {
+    .overflow-mob {
+        .card {
+            .card-body {
+                overflow-x: hidden !important;
+            }
+        }
+
+        .list-group-item {
+            width: 100% !important;
+        }
+    }
+    .modal-dialog {
+        padding-top: 0px !important;
+    }
+}
+
+.main-forms {
+    // position: relative;
+    // margin: 50px 0px;
+
+    .forms-content {
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // margin-right: -50%;
+        // transform: translate(-50%, -50%);
+        width: 100%;
+
+        .card-body {
+            background: #eee;
+        }
+        .forms-heading {
+            color: $dark-grey;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-bottom: 3px solid $dark-grey;
+            padding: 5px 15px;
+        }
+
+        input {
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        input::placeholder {
+            font-size: 0.8rem;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px 0px;
+            border-radius: 6px;
+            box-shadow: none;
+            border: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background-color: $navy-blue;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 768px) {
+    .form-details {
+        padding: 0px 40px;
+    }
+}
