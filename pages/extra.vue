@@ -6,24 +6,19 @@
         </v-col>
     </v-row> -->
     <v-row>
-
         <v-col cols="12" sm="5" md="2"> </v-col>
         <v-col cols="12" sm="5" md="9">
             <v-card class="mx-auto">
                 <!-- <div>{{ info }}</div> -->
                 <v-card-title class="text--secondary">
-                    <h6>List of Store</h6>
+                    <h6>List of Store( Total: {{ totalRecords }} )</h6>
                     <v-spacer></v-spacer>
                     <h6>Show entries:</h6>
-                    
-                    
-                    <span v-for="perPageOption in [10,50,100,150,200]" :key="perPageOption">
-                    <button class="per-page-button">{{perPageOption}}</button>
-                    </span>
-                    
+                    <v-pagination v-model="page" :length="pageCount">
+                    </v-pagination>
+
                     <!-- <v-pagination v-model="page" :length="3"  >
                     </v-pagination> -->
-
                 </v-card-title>
                 <div>
                     <v-row class="d-flex">
@@ -46,27 +41,32 @@
                         </v-col>
                     </v-row>
                 </div>
-                <v-data-table :headers="headers" :items="stores" >
+                <v-data-table :headers="headers" :items="stores" :page.sync="page" :items-per-page="itemsPerPage"
+                    hide-default-footer>
                     <template v-slot:item.actions="{ item }">
-
-                        <v-icon small class="update">
+                        <v-icon small class="update" color="indigo" dark>
                             mdi-pencil
                         </v-icon>
-                        <v-icon small class="eye">
+                        <v-icon small class="eye" color="indigo" dark>
                             mdi-eye
                         </v-icon>
-
-
-
                     </template>
                     <template v-slot:item.actions1="{ item }">
                         <v-switch class="extra"></v-switch>
                     </template>
                 </v-data-table>
+                <!-- <v-row class="text-center px-4 align-center" wrap>
+                    <v-col class="text-truncate" cols="12" md="2">
+                        Total {{ totalRecords }} records
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-pagination v-model="page" :length="pageCount">
+                        </v-pagination>
+                    </v-col>
+                </v-row> -->
             </v-card>
         </v-col>
     </v-row>
-    </div>
 </template>
 <script>
 import axios from 'axios'
@@ -81,6 +81,12 @@ export default {
             currentPage: null,
             perPage: 5,
             info: null,
+            itemsPerPage: 5,
+            perPageChoices: [
+                { text: '5 records/page', value: 5 },
+                { text: '10 records/page', value: 10 },
+                { text: '20 records/page', value: 20 },
+            ],
             formData: {
                 keyword: '',
                 limit: 0,
@@ -90,7 +96,6 @@ export default {
                 },
             },
             headers: [
-
                 { text: 'Date', value: 'createdAt' },
                 { text: 'Name', value: 'name' },
                 { text: 'Email', value: 'email' },
@@ -100,6 +105,14 @@ export default {
                 { text: '', value: 'actions1' },
             ],
         }
+    },
+    computed: {
+        totalRecords() {
+            return this.stores.length
+        },
+        pageCount() {
+            return this.totalRecords / this.itemsPerPage
+        },
     },
     mounted() {
         /* axios
@@ -136,19 +149,22 @@ export default {
     margin: 60px;
     box-shadow: 9px 9px 9px rgba(128, 128, 128, 0.6);
 }
-.eye{
-  color:green;
-  padding-right:15px;
+
+.eye {
+    color: green;
+    padding-right: 15px;
 }
-.delete{
-  color:red;
-  cursor: pointer;
+
+.delete {
+    color: red;
+    cursor: pointer;
 }
-.per-page-button{
-    padding:3px;
-    margin:2px;
-    border-radius:3px;
-    font-size:0.75em;
-    background-color:rgb(240, 237, 237);
+
+.per-page-button {
+    padding: 3px;
+    margin: 2px;
+    border-radius: 3px;
+    font-size: 0.75em;
+    background-color: rgb(240, 237, 237);
 }
 </style>

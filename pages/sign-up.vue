@@ -2,17 +2,25 @@
     <div class="main">
         <!-- hero section -->
         <div class="contain">
-            <img class="banner2
-             desktop" alt="about_banner"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1440&q=60" />
-            <img class="banner2 mobile" alt="about_banner"
-                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1440&q=60" />
-            <div class="centered">
-                <div class="design">
-                    Business Registration
-                    <p class="subtitle">Grow Your Business</p>
+            <center>
+                <img
+                    class="banner2
+             desktop"
+                    alt="about_banner"
+                    src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1440&q=60"
+                />
+                <img
+                    class="banner2 mobile"
+                    alt="about_banner"
+                    src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1440&q=60"
+                />
+                <div class="centered">
+                    <div class="design">
+                        Business Registration
+                        <p class="subtitle">Grow Your Business</p>
+                    </div>
                 </div>
-            </div>
+            </center>
         </div>
         <!-- end -->
         <v-row>
@@ -27,8 +35,14 @@
                                     Selected Package
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="selectedPackage" label="Selected Package*"
-                                        hide-details="auto" readonly required></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="selectedPackage"
+                                        hide-details="auto"
+                                        readonly
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -36,7 +50,14 @@
                                     Price
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="price" hide-details="auto" readonly required>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="price"
+                                        hide-details="auto"
+                                        readonly
+                                        required
+                                    >
                                     </v-text-field>
                                 </v-col>
                             </v-row>
@@ -45,8 +66,14 @@
                                     Membership Limit
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="membershipLimit" hide-details="auto" readonly
-                                        required></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="membershipLimit"
+                                        hide-details="auto"
+                                        readonly
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -54,7 +81,14 @@
                                     Usage
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="usage" hide-details="auto" readonly required>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="usage"
+                                        hide-details="auto"
+                                        readonly
+                                        required
+                                    >
                                     </v-text-field>
                                 </v-col>
                             </v-row>
@@ -63,14 +97,21 @@
                                     Shop Name
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="shopName" :rules="shopRules"
-                                        hide-details="auto" :error-messages="
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="shopName"
+                                        :rules="shopRules"
+                                        hide-details="auto"
+                                        :error-messages="
                                             saveClicked
                                                 ? shopName
                                                     ? ''
                                                     : 'Shop Name is required'
                                                 : ''
-                                        " required></v-text-field>
+                                        "
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <!-- <v-row>
@@ -186,14 +227,21 @@
                                     Contact Number
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="phoneNumber" :rules="phoneRules"
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="phoneNumber"
+                                        :rules="phoneRules"
                                         :error-messages="
                                             saveClicked
                                                 ? phoneNumber
                                                     ? ''
                                                     : 'Contact Number is required'
                                                 : ''
-                                        " hide-details="auto" required></v-text-field>
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-spacer></v-spacer>
@@ -202,13 +250,21 @@
                                     Email
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="email" :rules="emailRules" :error-messages="
-                                        saveClicked
-                                            ? email
-                                                ? ''
-                                                : 'Email is required'
-                                            : ''
-                                    " hide-details="auto" required></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="email"
+                                        :rules="emailRules"
+                                        :error-messages="
+                                            saveClicked
+                                                ? email
+                                                    ? ''
+                                                    : 'Email is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -216,14 +272,21 @@
                                     Address
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="address" :rules="addressRules"
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="address"
+                                        :rules="addressRules"
                                         :error-messages="
                                             saveClicked
                                                 ? address
                                                     ? ''
                                                     : 'Address is required'
                                                 : ''
-                                        " hide-details="auto" required></v-text-field>
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -231,15 +294,24 @@
                                     City
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field dense outlined v-model="city" :items="cityList" :rules="[
-                                        (v) => !!v || 'City is required',
-                                    ]" :error-messages="
-    saveClicked
-        ? city
-            ? ''
-            : 'City is required'
-        : ''
-" hide-details="auto" required>
+                                    <v-text-field
+                                        dense
+                                        outlined
+                                        v-model="city"
+                                        :items="cityList"
+                                        :rules="[
+                                            (v) => !!v || 'City is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? city
+                                                    ? ''
+                                                    : 'City is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    >
                                     </v-text-field>
                                 </v-col>
                             </v-row>
@@ -248,14 +320,21 @@
                                     Postal code
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field dense outlined v-model="postalCode" :rules="postalRules"
+                                    <v-text-field
+                                        dense
+                                        outlined
+                                        v-model="postalCode"
+                                        :rules="postalRules"
                                         :error-messages="
                                             saveClicked
                                                 ? postalCode
                                                     ? ''
                                                     : 'Postal Code is required'
                                                 : ''
-                                        " hide-details="auto" required></v-text-field>
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -263,15 +342,22 @@
                                     State
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field dense outlined :rules="[
-                                        (v) => !!v || 'State is required',
-                                    ]" :error-messages="
-    saveClicked
-        ? state
-            ? ''
-            : 'State is required'
-        : ''
-" hide-details="auto" required>
+                                    <v-text-field
+                                        dense
+                                        outlined
+                                        :rules="[
+                                            (v) => !!v || 'State is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? state
+                                                    ? ''
+                                                    : 'State is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    >
                                     </v-text-field>
                                 </v-col>
                             </v-row>
@@ -280,15 +366,22 @@
                                     Country
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field dense outlined :rules="[
-                                        (v) => !!v || 'Country is required',
-                                    ]" :error-messages="
-    saveClicked
-        ? state
-            ? ''
-            : 'Country is required'
-        : ''
-" hide-details="auto" required>
+                                    <v-text-field
+                                        dense
+                                        outlined
+                                        :rules="[
+                                            (v) => !!v || 'Country is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? state
+                                                    ? ''
+                                                    : 'Country is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    >
                                     </v-text-field>
                                 </v-col>
                             </v-row>
@@ -297,24 +390,32 @@
                                     Destination
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense :rules="[
-                                        (v) =>
-                                            !!v ||
-                                            'Destination is required',
-                                    ]" :error-messages="
-    saveClicked
-        ? state
-            ? ''
-            : 'Destination is required'
-        : ''
-" required></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        :rules="[
+                                            (v) =>
+                                                !!v ||
+                                                'Destination is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? state
+                                                    ? ''
+                                                    : 'Destination is required'
+                                                : ''
+                                        "
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-spacer></v-spacer>
                             <v-row class="d-flex">
                                 <v-col cols="2"> </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <strong class="text-center">Login Information</strong>
+                                    <strong class="text-center"
+                                        >Login Information</strong
+                                    >
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -322,19 +423,31 @@
                                     Password
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="password" :append-icon="
-                                        show1 ? 'mdi-eye' : 'mdi-eye-off'
-                                    " :rules="[
-    rules.required,
-    rules.min,
-    rules.validate,
-]" :type="show1 ? 'text' : 'password'" hint="At least 8 characters" :error-messages="
-    saveClicked
-        ? password
-            ? ''
-            : 'Password is required'
-        : ''
-" @click:append="show1 = !show1" hide-details="auto" required></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="password"
+                                        :append-icon="
+                                            show1 ? 'mdi-eye' : 'mdi-eye-off'
+                                        "
+                                        :rules="[
+                                            rules.required,
+                                            rules.min,
+                                            rules.validate,
+                                        ]"
+                                        :type="show1 ? 'text' : 'password'"
+                                        hint="At least 8 characters"
+                                        :error-messages="
+                                            saveClicked
+                                                ? password
+                                                    ? ''
+                                                    : 'Password is required'
+                                                : ''
+                                        "
+                                        @click:append="show1 = !show1"
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-spacer />
@@ -344,10 +457,18 @@
                                     Re-enter password
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
-                                    <v-text-field outlined dense v-model="confirmPassword" :append-icon="
-                                        show2 ? 'mdi-eye' : 'mdi-eye-off'
-                                    " :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'"
-                                        :error-messages="errMsg2" @click:append="show2 = !show2"></v-text-field>
+                                    <v-text-field
+                                        outlined
+                                        dense
+                                        v-model="confirmPassword"
+                                        :append-icon="
+                                            show2 ? 'mdi-eye' : 'mdi-eye-off'
+                                        "
+                                        :rules="[rules.required, rules.min]"
+                                        :type="show1 ? 'text' : 'password'"
+                                        :error-messages="errMsg2"
+                                        @click:append="show2 = !show2"
+                                    ></v-text-field>
                                 </v-col>
                             </v-row>
                             <v-row class="d-flex">
@@ -358,9 +479,13 @@
                                             {{ num1 }} {{ operator }}
                                             {{ num2 }} =
                                             <div class="txt-field">
-                                                <v-text-field class="txt-field" v-model.number="
-                                                    captchaEntered
-                                                " hide-details="auto"></v-text-field>
+                                                <v-text-field
+                                                    class="txt-field"
+                                                    v-model.number="
+                                                        captchaEntered
+                                                    "
+                                                    hide-details="auto"
+                                                ></v-text-field>
                                             </div>
                                         </div>
                                     </v-col>
@@ -370,9 +495,12 @@
                                 <v-col cols="2"> </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-container class="px-0 py-0" fluid>
-                                        <v-checkbox v-model="checkbox" :label="
-                                            `I Agree To The Terms & Conditions`
-                                        "></v-checkbox>
+                                        <v-checkbox
+                                            v-model="checkbox"
+                                            :label="
+                                                `I Agree To The Terms & Conditions`
+                                            "
+                                        ></v-checkbox>
                                     </v-container>
                                 </v-col>
                             </v-row>
@@ -380,18 +508,32 @@
                                 <v-col cols="2"> </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-row class="d-flex">
-                                        <v-col cols="4">
+                                        <v-col cols="4" >
                                             <v-card>
                                                 <v-card>
-                                                    <v-btn class="mt-4 white--text" block color="#f17504" elevation="2"
-                                                        @click="saveFormData()">Submit</v-btn>
+                                                    <v-btn
+                                                        class="mt-4 white--text"
+                                                        block
+                                                        color="#f17504"
+                                                        elevation="2"
+                                                        @click="saveFormData()"
+                                                        >Submit</v-btn
+                                                    >
                                                 </v-card>
                                             </v-card>
                                         </v-col>
-                                        <v-col cols="4">
+                                        <v-col cols="4"  >
                                             <v-card>
-                                                <v-btn class="mt-4 white--text" block color="grey" elevation="2"
-                                                    @click="reset()">Clear</v-btn>
+                                                <v-card>
+                                                    <v-btn
+                                                        class="mt-4 white--text"
+                                                        block
+                                                        color="grey"
+                                                        elevation="2"
+                                                        @click="reset()"
+                                                        >Clear</v-btn
+                                                    >
+                                                </v-card>
                                             </v-card>
                                         </v-col>
                                     </v-row>
@@ -408,10 +550,18 @@
                         <div>
                             <div class="container">
                                 <center>
-                                    <a href="https://play.google.com/store/apps" target="_blank"
-                                        class="market-btn google-btn" role="button">
-                                        <span class="market-button-subtitle">Download on the</span>
-                                        <span class="market-button-title">Google Play</span>
+                                    <a
+                                        href="https://play.google.com/store/apps"
+                                        target="_blank"
+                                        class="market-btn google-btn"
+                                        role="button"
+                                    >
+                                        <span class="market-button-subtitle"
+                                            >Download on the</span
+                                        >
+                                        <span class="market-button-title"
+                                            >Google Play</span
+                                        >
                                     </a>
                                 </center>
                             </div>
@@ -435,27 +585,63 @@
                                     Search Product<br />
                                     Download App<br />
                                 </v-col>
-                                <v-col cols="12" sm="5" md="2" class="smart-deal-offer-logo px-4">
-                                    <img src="~/assets/img/static/logo.png" alt="" />
+                                <v-col
+                                    cols="12"
+                                    sm="5"
+                                    md="2"
+                                    class="smart-deal-offer-logo px-4"
+                                >
+                                    <img
+                                        src="~/assets/img/static/logo.png"
+                                        alt=""
+                                    />
                                     <v-row no-gutters>
                                         <center>
-                                            <v-btn class="sam3" dark fab bottom color="grey darken-8" x-small :href="
-                                                `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`
-                                            " target="_blank">
+                                            <v-btn
+                                                class="sam3"
+                                                dark
+                                                fab
+                                                bottom
+                                                color="grey darken-8"
+                                                x-small
+                                                :href="
+                                                    `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`
+                                                "
+                                                target="_blank"
+                                            >
                                                 <v-icon>mdi-facebook</v-icon>
                                             </v-btn>
-                                            <v-btn class="sam3" dark fab bottom color="grey darken-8" x-small :href="
-                                                `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`
-                                            " target="_blank">
+                                            <v-btn
+                                                class="sam3"
+                                                dark
+                                                fab
+                                                bottom
+                                                color="grey darken-8"
+                                                x-small
+                                                :href="
+                                                    `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`
+                                                "
+                                                target="_blank"
+                                            >
                                                 <v-icon medium>
                                                     mdi-twitter
                                                 </v-icon>
                                             </v-btn>
-                                            <v-btn class="sam3" dark fab bottom color="grey darken-8" x-small :href="
-                                                `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`
-                                            " target="_blank">
+                                            <v-btn
+                                                class="sam3"
+                                                dark
+                                                fab
+                                                bottom
+                                                color="grey darken-8"
+                                                x-small
+                                                :href="
+                                                    `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`
+                                                "
+                                                target="_blank"
+                                            >
                                                 <v-icon medium>
-                                                    mdi-instagram</v-icon>
+                                                    mdi-instagram</v-icon
+                                                >
                                             </v-btn>
                                         </center>
                                     </v-row>
@@ -1039,6 +1225,10 @@ export default {
                 state: '',
                 membershipLimit: '',
                 address: '',
+                postalCode: '',
+                city: '',
+                password: '',
+                confirmPassword: '',
             },
             // registrationData: {
             //     name: '',
@@ -1218,7 +1408,6 @@ export default {
                 this.postalCode = ''
                 this.state = ''
                 this.city = ''
-
                 this.address = ''
                 this.password = ''
                 this.confirmPassword = ''
@@ -1275,12 +1464,9 @@ export default {
                         phone: phone,
                         email: this.email,
                         country: country,
-                        openingTime: this.openingTime,
-                        closingTime: this.closingTime,
                         city: this.city,
                         pinCode: this.postalCode,
                         state: this.state,
-                        gender: this.gender,
                         type: 'store',
                         webSiteType: 'store',
                     }
@@ -1293,7 +1479,7 @@ export default {
                             response.data &&
                             response.data.error &&
                             response.data.error.code ==
-                            'InvalidParameterException'
+                                'InvalidParameterException'
                         ) {
                             this.loading = false
                             this.$toaster.error('Please Enter Valid Details')
@@ -1302,7 +1488,7 @@ export default {
                             response.data &&
                             response.data.error &&
                             response.data.error.code ==
-                            'UsernameExistsException'
+                                'UsernameExistsException'
                         ) {
                             this.dialogClose()
                             this.loading = false
@@ -1524,7 +1710,8 @@ label {
 }
 
 .contain img.desktop {
-    filter: grayscale(100%) brightness(35%) sepia(300%) hue-rotate(60deg) saturate(500%) blur(3px);
+    filter: grayscale(100%) brightness(35%) sepia(300%) hue-rotate(60deg)
+        saturate(500%) blur(3px);
     object-fit: cover;
     opacity: 0.5;
 }
@@ -1533,7 +1720,8 @@ label {
     /* filter: blur(5px);
     filter: sepia(80%);
     filter: invert(40%); */
-    filter: grayscale(100%) brightness(40%) sepia(300%) hue-rotate(60deg) saturate(500%);
+    filter: grayscale(100%) brightness(40%) sepia(300%) hue-rotate(60deg)
+        saturate(500%);
     object-fit: cover;
     opacity: 0.5;
     height: 40vh;
