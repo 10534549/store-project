@@ -66,7 +66,8 @@
                             <v-dialog v-model="dialog" max-width="500px">
                                 <v-card>
                                     <v-card-title>
-                                        <span class="text-h5">Edit Item</span>
+                                        <span v-if="hasEdit" class="text-h5">Edit Item</span>
+                                        <span v-if="hasView" class="text-h5">View Item</span>
                                     </v-card-title>
 
                                     <v-card-text>
@@ -77,6 +78,7 @@
                                                         v-model="
                                                             editedItem.createdAt
                                                         "
+                                                        :readonly="hasView"
                                                         label="CreatedAt"
                                                     ></v-text-field>
                                                 </v-col>
@@ -85,6 +87,7 @@
                                                         v-model="
                                                             editedItem.name
                                                         "
+                                                        :readonly="hasView"
                                                         label="Name"
                                                     ></v-text-field>
                                                 </v-col>
@@ -93,6 +96,7 @@
                                                         v-model="
                                                             editedItem.email
                                                         "
+                                                        :readonly="hasView"
                                                         label="Email"
                                                     ></v-text-field>
                                                 </v-col>
@@ -101,14 +105,33 @@
                                                         v-model="
                                                             editedItem.contactNumber
                                                         "
+                                                        :readonly="hasView"
                                                         label="Phone"
                                                     ></v-text-field>
                                                 </v-col>
+                                                <!-- <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.address
+                                                        "
+                                                        :readonly="hasView"
+                                                        label="Address"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.city
+                                                        "
+                                                        :readonly="hasView"
+                                                        label="City"
+                                                    >
+                                                    </v-text-field>
+                                                </v-col> -->
                                             </v-row>
                                         </v-container>
                                     </v-card-text>
-
-                                    <v-card-actions>
+                                    <v-card-actions v-if="hasEdit">
                                         <v-spacer></v-spacer>
                                         <v-btn
                                             color="blue darken-1"
@@ -127,8 +150,8 @@
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
-                        </v-toolbar></template
-                    >
+                        </v-toolbar>
+                    </template>
                     <template v-slot:item.actions="{ item }">
                         <v-icon
                             small
@@ -139,11 +162,18 @@
                         >
                             mdi-pencil
                         </v-icon>
-                        <v-icon small class="eye" color="indigo" dark>
+                        <v-icon
+                            small
+                            class="eye"
+                            color="indigo"
+                            dark
+                            @click="viewItem(item)"
+                        >
                             mdi-eye
                         </v-icon>
                     </template>
                 </v-data-table>
+
                 <!-- <v-row class="text-center px-4 align-center" wrap>
                     <v-col class="text-truncate" cols="12" md="2">
                         Total {{ totalRecords }} records
@@ -175,6 +205,7 @@ export default {
                 { text: '5 records/page', value: 5 },
                 { text: '10 records/page', value: 10 },
                 { text: '20 records/page', value: 20 },
+                { text: '30 records/page', value: 30 },
             ],
             formData: {
                 keyword: '',
@@ -194,6 +225,8 @@ export default {
                 { text: '', value: 'actions1' },
             ],
             dialog: false,
+            hasEdit: false,
+            hasView: false,
             editedIndex: -1,
             editedItem: {
                 name: '',
@@ -207,6 +240,9 @@ export default {
                 contactNumber: '',
                 updatedAt: '',
                 createdAt: '',
+                city: '',
+                state: '',
+                country: '',
             },
         }
     },
@@ -251,22 +287,36 @@ export default {
         },
         editItem(item) {
             this.dialog = true
+            this.hasView = false
+            this.hasEdit = true
+            this.editedIndex = this.stores.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+        },
+        viewItem(item) {
+            this.dialog = true
+            this.hasEdit = false
+            this.hasView = true
             this.editedIndex = this.stores.indexOf(item)
             this.editedItem = Object.assign({}, item)
         },
         save() {
-            // this.allStore(this.editedItem)
             if (this.editedIndex > -1) {
-                this.allStore(this.editedItem)
                 Object.assign(this.stores[this.editedIndex], this.editedItem)
             } else {
-                this.allStore(this.editedItem)
-
                 this.stores.push(this.editedItem)
                 // call apiService
             }
+            console.log('editedIndex', this.editedItem)
+            apiService.updateStore(this.editedItem, (response) => {
+                if (response.status === 200) {
+                    console.log('response', response)
+                } else {
+                    console.log('erorr', response)
+                }
+            })
             this.close()
         },
+
         close() {
             this.dialog = false
             this.$nextTick(() => {

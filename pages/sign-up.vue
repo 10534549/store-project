@@ -566,22 +566,30 @@
                         </div>
                         <div class="underline-1"></div>
                         <div class="footer">
-                            <v-row>
-                                <v-col cols="12" sm="5" md="4">
+                            <v-row class="deco">
+                                <v-col class="deco" cols="12" sm="5" md="4">
                                     <!-- <v-btn text href="/services"> services </v-btn> -->
-
-                                    About us <br />
+                                    <a href="#">About us</a><br />
+                                    <a href="#">Business Registration</a><br />
+                                    <a href="#">Careers</a><br />
+                                    <a href="#">Site Map</a><br />
+                                    <a href="#">Contact Us</a><br />
+                                    <!-- About us <br />
                                     Business registration<br />
                                     Careers<br />
                                     Support<br />
                                     Sitemap<br />
-                                    Contact us<br />
+                                    Contact us<br /> -->
                                 </v-col>
                                 <v-col cols="12" sm="5" md="6">
-                                    Login<br />
+                                    <a href="#">Login</a><br />
+                                    <a href="#">Why SmartOfferdeal</a><br />
+                                    <a href="#">Search Product</a><br />
+                                    <a href="#">Download App</a><br />
+                                    <!-- Login<br />
                                     Why SmartOfferdeal<br />
                                     Search Product<br />
-                                    Download App<br />
+                                    Download App<br /> -->
                                 </v-col>
                                 <v-col
                                     cols="12"
@@ -1888,6 +1896,7 @@ label {
 
 .footer {
     padding: 80px;
+    text-decoration: none;
 }
 
 .smart-deal-offer-logo {
@@ -1903,7 +1912,10 @@ label {
     margin: 1px;
 }
 
-.sam4 {
-    padding: 80px;
+// .sam4 {
+//     padding: 80px;
+// }
+.deco{
+    text-decoration:none;
 }
 </style>
