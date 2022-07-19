@@ -23,7 +23,11 @@
                 <div>
                     <v-row class="d-flex">
                         <v-col cols="12" sm="6" md="2">
-                            <v-text-field placeholder="Filter by" outlined dense></v-text-field>
+                            <v-text-field
+                                placeholder="Filter by"
+                                outlined
+                                dense
+                            ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6" md="4">
                             <v-btn depressed color="error">
@@ -37,22 +41,107 @@
                             </v-btn>
                         </v-col>
                         <v-col cols="12" sm="4" md="4">
-                            <v-text-field placeholder="search store" outlined dense></v-text-field>
+                            <v-text-field
+                                placeholder="search store"
+                                outlined
+                                dense
+                            ></v-text-field>
                         </v-col>
                     </v-row>
                 </div>
-                <v-data-table :headers="headers" :items="stores" :page.sync="page" :items-per-page="itemsPerPage"
-                    hide-default-footer>
+                <v-data-table
+                    :headers="headers"
+                    :items="stores"
+                    :page.sync="page"
+                    :items-per-page="itemsPerPage"
+                    hide-default-footer
+                >
+                    <template v-slot:item.actions1="{ item }">
+                        <v-switch class="extra"></v-switch>
+                    </template>
+                    <template v-slot:top>
+                        <v-toolbar flat>
+                            <v-divider class="mx-4" inset vertical></v-divider>
+                            <v-spacer></v-spacer>
+                            <v-dialog v-model="dialog" max-width="500px">
+                                <v-card>
+                                    <v-card-title>
+                                        <span class="text-h5">Edit Item</span>
+                                    </v-card-title>
+
+                                    <v-card-text>
+                                        <v-container>
+                                            <v-row>
+                                                <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.createdAt
+                                                        "
+                                                        label="CreatedAt"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.name
+                                                        "
+                                                        label="Name"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.email
+                                                        "
+                                                        label="Email"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
+                                                            editedItem.contactNumber
+                                                        "
+                                                        label="Phone"
+                                                    ></v-text-field>
+                                                </v-col>
+                                            </v-row>
+                                        </v-container>
+                                    </v-card-text>
+
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn
+                                            color="blue darken-1"
+                                            text
+                                            @click="close"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            color="blue darken-1"
+                                            text
+                                            @click="save"
+                                        >
+                                            Save
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+                        </v-toolbar></template
+                    >
                     <template v-slot:item.actions="{ item }">
-                        <v-icon small class="update" color="indigo" dark>
+                        <v-icon
+                            small
+                            class="update"
+                            color="indigo"
+                            dark
+                            @click="editItem(item)"
+                        >
                             mdi-pencil
                         </v-icon>
                         <v-icon small class="eye" color="indigo" dark>
                             mdi-eye
                         </v-icon>
-                    </template>
-                    <template v-slot:item.actions1="{ item }">
-                        <v-switch class="extra"></v-switch>
                     </template>
                 </v-data-table>
                 <!-- <v-row class="text-center px-4 align-center" wrap>
@@ -104,6 +193,21 @@ export default {
                 { text: 'Actions', value: 'actions' },
                 { text: '', value: 'actions1' },
             ],
+            dialog: false,
+            editedIndex: -1,
+            editedItem: {
+                name: '',
+                email: '',
+                contactNumber: '',
+                createdAt: '',
+            },
+            defaultItem: {
+                name: '',
+                email: '',
+                contactNumber: '',
+                updatedAt: '',
+                createdAt: '',
+            },
         }
     },
     computed: {
@@ -112,6 +216,14 @@ export default {
         },
         pageCount() {
             return this.totalRecords / this.itemsPerPage
+        },
+    },
+    watch: {
+        dialog(val) {
+            val || this.close()
+        },
+        dialogDelete(val) {
+            val || this.closeDelete()
         },
     },
     mounted() {
@@ -135,6 +247,31 @@ export default {
                     this.stores = []
                     this.currentPage = 1
                 }
+            })
+        },
+        editItem(item) {
+            this.dialog = true
+            this.editedIndex = this.stores.indexOf(item)
+            this.editedItem = Object.assign({}, item)
+        },
+        save() {
+            // this.allStore(this.editedItem)
+            if (this.editedIndex > -1) {
+                this.allStore(this.editedItem)
+                Object.assign(this.stores[this.editedIndex], this.editedItem)
+            } else {
+                this.allStore(this.editedItem)
+
+                this.stores.push(this.editedItem)
+                // call apiService
+            }
+            this.close()
+        },
+        close() {
+            this.dialog = false
+            this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
             })
         },
     },

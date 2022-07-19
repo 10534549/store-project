@@ -244,7 +244,6 @@
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
-                            <v-spacer></v-spacer>
                             <v-row class="d-flex">
                                 <v-col cols="2">
                                     Email
@@ -450,7 +449,6 @@
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
-                            <v-spacer />
 
                             <v-row class="d-flex">
                                 <v-col cols="2">
@@ -508,7 +506,7 @@
                                 <v-col cols="2"> </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-row class="d-flex">
-                                        <v-col cols="4" >
+                                        <v-col cols="4">
                                             <v-card>
                                                 <v-card>
                                                     <v-btn
@@ -522,7 +520,7 @@
                                                 </v-card>
                                             </v-card>
                                         </v-col>
-                                        <v-col cols="4"  >
+                                        <v-col cols="4">
                                             <v-card>
                                                 <v-card>
                                                     <v-btn
@@ -1118,6 +1116,13 @@
                 </b-container>
             </div>
         </section> -->
+        <v-footer color="grey" :absolute="!fixed" app>
+            <span class=" white--text"
+                >&copy; {{ new Date().getFullYear() }} SmartOfferDeal</span
+            >
+            <v-spacer></v-spacer>
+            <span class=" white--text"> Terms & Conditions</span>
+        </v-footer>
     </div>
 </template>
 <script>
@@ -1145,7 +1150,6 @@ export default {
     data() {
         return {
             saveClicked: false,
-
             checkbox: false,
             num1: '',
             num2: '',
@@ -1444,7 +1448,7 @@ export default {
         //         time[0] = +time[0] % 12 || 12 // Adjust hours
         //     }
         //     return time.join('') // return adjusted time or original string
-        // },
+        // },,
         saveFormData() {
             // console.log('time1', this.openingTime)
             // console.log('time2', this.closingTime)
@@ -1899,7 +1903,7 @@ label {
     margin: 1px;
 }
 
-// .sam4{
-//     padding:80px;
-// }
+.sam4 {
+    padding: 80px;
+}
 </style>
