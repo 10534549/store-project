@@ -114,6 +114,75 @@
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
+                            <v-row class="d-flex">
+                                <v-col cols="2">
+                                    First Name
+                                </v-col>
+                                <v-col cols="12" sm="6" md="8">
+                                    <v-text-field
+                                        v-model="firstname"
+                                        :rules="nameRules"
+                                        outlined
+                                        dense
+                                        :error-messages="
+                                            saveClicked
+                                                ? firstname
+                                                    ? ''
+                                                    : 'First Name is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row class="d-flex">
+                                <v-col cols="2">
+                                    Last Name
+                                </v-col>
+                                <v-col cols="12" sm="6" md="8">
+                                    <v-text-field
+                                        v-model="lastname"
+                                        :rules="nameRules"
+                                        outlined
+                                        dense
+                                        :error-messages="
+                                            saveClicked
+                                                ? lastname
+                                                    ? ''
+                                                    : 'Last Name is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row class="d-flex">
+                                <v-col cols="2">
+                                    Gender
+                                </v-col>
+                                <v-col cols="12" sm="6" md="8">
+                                    <v-select
+                                        v-model="gender"
+                                        outlined
+                                        dense
+                                        :items="genderList"
+                                        :rules="[
+                                            (v) => !!v || 'Gender is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? gender
+                                                    ? ''
+                                                    : 'Gender is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    ></v-select>
+                                </v-col>
+                            </v-row>
                             <!-- <v-row>
                                 <v-col cols="12" sm="6">
                                     <v-dialog
@@ -290,12 +359,57 @@
                             </v-row>
                             <v-row class="d-flex">
                                 <v-col cols="2">
-                                    City
+                                    Country
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
                                         dense
                                         outlined
+                                        :rules="countryRules"
+                                        :error-messages="
+                                            saveClicked
+                                                ? state
+                                                    ? ''
+                                                    : 'Country is required'
+                                                : ''
+                                        "
+                                        hide-details="auto"
+                                        required
+                                    >
+                                    </v-text-field>
+                                </v-col>
+                            </v-row>
+                            <v-row class="d-flex">
+                                <v-col cols="2">
+                                    State
+                                </v-col>
+                                <v-col cols="12" sm="6" md="8">
+                                    <v-select
+                                        v-model="state"
+                                        :items="stateList"
+                                        :rules="[
+                                            (v) => !!v || 'State is required',
+                                        ]"
+                                        :error-messages="
+                                            saveClicked
+                                                ? state
+                                                    ? ''
+                                                    : 'State is required'
+                                                : ''
+                                        "
+                                        dense
+                                        outlined
+                                        hide-details="auto"
+                                        required
+                                    ></v-select>
+                                </v-col>
+                            </v-row>
+                            <v-row class="d-flex">
+                                <v-col cols="2">
+                                    City
+                                </v-col>
+                                <v-col cols="12" sm="6" md="8">
+                                    <!-- <v-select
                                         v-model="city"
                                         :items="cityList"
                                         :rules="[
@@ -308,12 +422,28 @@
                                                     : 'City is required'
                                                 : ''
                                         "
+                                        dense
+                                        outlined
+                                    ></v-select> -->
+                                    <v-select
+                                        v-model="city"
+                                        :items="cityList"
+                                        :rules="cityRules"
+                                        :error-messages="
+                                            saveClicked
+                                                ? city
+                                                    ? ''
+                                                    : 'City is required'
+                                                : ''
+                                        "
+                                        outlined
+                                        dense
                                         hide-details="auto"
                                         required
-                                    >
-                                    </v-text-field>
+                                    ></v-select>
                                 </v-col>
                             </v-row>
+
                             <v-row class="d-flex">
                                 <v-col cols="2">
                                     Postal code
@@ -336,54 +466,7 @@
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
-                            <v-row class="d-flex">
-                                <v-col cols="2">
-                                    State
-                                </v-col>
-                                <v-col cols="12" sm="6" md="8">
-                                    <v-text-field
-                                        dense
-                                        outlined
-                                        :rules="[
-                                            (v) => !!v || 'State is required',
-                                        ]"
-                                        :error-messages="
-                                            saveClicked
-                                                ? state
-                                                    ? ''
-                                                    : 'State is required'
-                                                : ''
-                                        "
-                                        hide-details="auto"
-                                        required
-                                    >
-                                    </v-text-field>
-                                </v-col>
-                            </v-row>
-                            <v-row class="d-flex">
-                                <v-col cols="2">
-                                    Country
-                                </v-col>
-                                <v-col cols="12" sm="6" md="8">
-                                    <v-text-field
-                                        dense
-                                        outlined
-                                        :rules="[
-                                            (v) => !!v || 'Country is required',
-                                        ]"
-                                        :error-messages="
-                                            saveClicked
-                                                ? state
-                                                    ? ''
-                                                    : 'Country is required'
-                                                : ''
-                                        "
-                                        hide-details="auto"
-                                        required
-                                    >
-                                    </v-text-field>
-                                </v-col>
-                            </v-row>
+
                             <v-row class="d-flex">
                                 <v-col cols="2">
                                     Destination
@@ -392,11 +475,7 @@
                                     <v-text-field
                                         outlined
                                         dense
-                                        :rules="[
-                                            (v) =>
-                                                !!v ||
-                                                'Destination is required',
-                                        ]"
+                                        :rules="destinationRules"
                                         :error-messages="
                                             saveClicked
                                                 ? state
@@ -408,7 +487,6 @@
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
-                            <v-spacer></v-spacer>
                             <v-row class="d-flex">
                                 <v-col cols="2"> </v-col>
                                 <v-col cols="12" sm="6" md="8">
@@ -1181,7 +1259,6 @@ export default {
             shopName: '',
             states: states,
             cityState: cityState,
-
             phoneNumber: '',
             email: '',
             state: '',
@@ -1207,6 +1284,24 @@ export default {
                     /^[A-Za-z]+$/.test(v) ||
                     'Invalid Characters entered for field',
             ],
+            cityRules: [
+                (v) => !!v || 'city is required',
+                (v) =>
+                    /^[A-Za-z]+$/.test(v) ||
+                    'Invalid Characters entered for field',
+            ],
+            countryRules: [
+                (v) => !!v || 'country is required',
+                (v) =>
+                    /^[A-Za-z]+$/.test(v) ||
+                    'Invalid Characters entered for field',
+            ],
+            destinationRules: [
+                (v) => !!v || 'destination place is required',
+                (v) =>
+                    /^[A-Za-z]+$/.test(v) ||
+                    'Invalid Characters entered for field',
+            ],
             password: '',
             confirmPassword: '',
             errMsg2: '',
@@ -1226,6 +1321,7 @@ export default {
                     /^[0-9]{10}$/.test(v) ||
                     'Invalid characters entered for phone number',
             ],
+            genderList: ['Male', 'Female', 'Other'],
 
             // .......................................
             showPassword: '',
@@ -1352,6 +1448,7 @@ export default {
             return sL
         },
         cityList() {
+            console.log('cityState', this.cityState)
             let cL = []
             if (this.state != '') {
                 for (let cityName of this.cityState) {
@@ -1360,6 +1457,8 @@ export default {
                     }
                 }
             }
+            console.log('state', this.state)
+            console.log('cityState', cL)
             return cL
         },
     },
@@ -1912,10 +2011,11 @@ label {
     margin: 1px;
 }
 
-// .sam4 {
-//     padding: 80px;
-// }
-.deco{
-    text-decoration:none;
+.sam4 {
+    padding: 80px;
+}
+.deco {
+    text-decoration: none;
+    line-height: 25px;
 }
 </style>

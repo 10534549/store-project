@@ -56,8 +56,11 @@
                     :items-per-page="itemsPerPage"
                     hide-default-footer
                 >
-                    <template v-slot:item.actions1="{ item }">
+                    <!-- <template v-slot:item.actions1="{ item }">
                         <v-switch class="extra"></v-switch>
+                    </template> -->
+                    <template v-slot:item.createdAt="{ item }">
+                        <span>{{ formatDate(item.createdAt) }} </span>
                     </template>
                     <template v-slot:top>
                         <v-toolbar flat>
@@ -66,22 +69,48 @@
                             <v-dialog v-model="dialog" max-width="500px">
                                 <v-card>
                                     <v-card-title>
-                                        <span v-if="hasEdit" class="text-h5">Edit Item</span>
-                                        <span v-if="hasView" class="text-h5">View Item</span>
+                                        <span v-if="hasEdit" class="text-h5"
+                                            >Edit Item</span
+                                        >
+                                        <span v-if="hasView" class="text-h5"
+                                            >View Item</span
+                                        >
                                     </v-card-title>
 
                                     <v-card-text>
                                         <v-container>
                                             <v-row>
-                                                <v-col cols="12" sm="6" md="4">
+                                                <v-col
+                                                    v-if="hasEdit"
+                                                    cols="12"
+                                                    sm="6"
+                                                    md="4"
+                                                >
                                                     <v-text-field
                                                         v-model="
                                                             editedItem.createdAt
                                                         "
-                                                        :readonly="hasView"
                                                         label="CreatedAt"
                                                     ></v-text-field>
                                                 </v-col>
+                                                <v-col
+                                                    v-if="hasView"
+                                                    cols="12"
+                                                    sm="6"
+                                                    md="4"
+                                                >
+                                                    <v-text-field
+                                                        v-if="hasView"
+                                                        :readonly="hasView"
+                                                        label="CreatedAt"
+                                                        :value="
+                                                            formatDate(
+                                                                editedItem.createdAt,
+                                                            )
+                                                        "
+                                                    ></v-text-field>
+                                                </v-col>
+
                                                 <v-col cols="12" sm="6" md="4">
                                                     <v-text-field
                                                         v-model="
@@ -140,6 +169,9 @@
                                         >
                                             Cancel
                                         </v-btn>
+                                        <v-btn colo>
+
+                                        </v-btn>
                                         <v-btn
                                             color="blue darken-1"
                                             text
@@ -189,6 +221,7 @@
 </template>
 <script>
 import axios from 'axios'
+import moment from 'moment'
 import apiService from '@/service/apiService'
 export default {
     name: 'Extra',
@@ -220,7 +253,7 @@ export default {
                 { text: 'Name', value: 'name' },
                 { text: 'Email', value: 'email' },
                 { text: 'Mobile', value: 'contactNumber' },
-                { text: 'Expiry Date', value: 'updatedAt' },
+                // { text: 'Expiry Date', value: 'updatedAt' },
                 { text: 'Actions', value: 'actions' },
                 { text: '', value: 'actions1' },
             ],
@@ -284,6 +317,11 @@ export default {
                     this.currentPage = 1
                 }
             })
+        },
+        formatDate(value) {
+            if (value) {
+                return moment(String(value)).format('DD/MM/YYYY')
+            }
         },
         editItem(item) {
             this.dialog = true
