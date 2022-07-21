@@ -18,20 +18,25 @@
                             dense
                         ></v-text-field>
                     </v-col>
-                    <v-col cols="12" sm="6" md="4">
+                    <v-col cols="12" sm="6" md="2">
                         <v-text-field
                             label="What are you looking for?"
                             outlined
                             dense
                         ></v-text-field>
                     </v-col>
+                    <v-col cols="12" sm="6" md="1">
+                        <v-btn color="orange" dark>
+                            <v-icon dark>mdi-magnify</v-icon>
+                        </v-btn></v-col
+                    >
                     <v-col cols="12" sm="6" md="3">
-                        <v-btn rounded x-large elevation="0">
+                        <v-btn rounded large elevation="0">
                             BUSINESS REGISTRATION</v-btn
                         >
                     </v-col>
                     <v-col cols="12" sm="6" md="3">
-                        <v-btn rounded x-large elevation="0">
+                        <v-btn rounded large elevation="0">
                             SIGN UP|LOGIN</v-btn
                         >
                     </v-col>

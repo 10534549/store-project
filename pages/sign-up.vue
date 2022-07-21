@@ -27,7 +27,7 @@
             <!-- <v-col cols="8" sm="8" md="8" lg="8" xl="8"> -->
             <v-col class="m-1">
                 <!-- Form -->
-                <v-form ref="form" v-model="valid">
+                <v-form ref="form" v-model="valid" lazy-validation>
                     <v-card>
                         <v-container>
                             <v-row class="d-flex">
@@ -36,9 +36,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="selectedPackage"
                                         outlined
                                         dense
-                                        v-model="selectedPackage"
                                         hide-details="auto"
                                         readonly
                                         required
@@ -51,9 +51,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="price"
                                         outlined
                                         dense
-                                        v-model="price"
                                         hide-details="auto"
                                         readonly
                                         required
@@ -67,9 +67,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="membershipLimit"
                                         outlined
                                         dense
-                                        v-model="membershipLimit"
                                         hide-details="auto"
                                         readonly
                                         required
@@ -82,9 +82,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="usage"
                                         outlined
                                         dense
-                                        v-model="usage"
                                         hide-details="auto"
                                         readonly
                                         required
@@ -98,9 +98,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="shopName"
                                         outlined
                                         dense
-                                        v-model="shopName"
                                         :rules="shopRules"
                                         hide-details="auto"
                                         :error-messages="
@@ -297,9 +297,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="phoneNumber"
                                         outlined
                                         dense
-                                        v-model="phoneNumber"
                                         :rules="phoneRules"
                                         :error-messages="
                                             saveClicked
@@ -319,9 +319,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="email"
                                         outlined
                                         dense
-                                        v-model="email"
                                         :rules="emailRules"
                                         :error-messages="
                                             saveClicked
@@ -341,9 +341,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="address"
                                         outlined
                                         dense
-                                        v-model="address"
                                         :rules="addressRules"
                                         :error-messages="
                                             saveClicked
@@ -450,9 +450,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="postalCode"
                                         dense
                                         outlined
-                                        v-model="postalCode"
                                         :rules="postalRules"
                                         :error-messages="
                                             saveClicked
@@ -501,9 +501,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="password"
                                         outlined
                                         dense
-                                        v-model="password"
                                         :append-icon="
                                             show1 ? 'mdi-eye' : 'mdi-eye-off'
                                         "
@@ -521,9 +521,9 @@
                                                     : 'Password is required'
                                                 : ''
                                         "
-                                        @click:append="show1 = !show1"
                                         hide-details="auto"
                                         required
+                                        @click:append="show1 = !show1"
                                     ></v-text-field>
                                 </v-col>
                             </v-row>
@@ -534,9 +534,9 @@
                                 </v-col>
                                 <v-col cols="12" sm="6" md="8">
                                     <v-text-field
+                                        v-model="confirmPassword"
                                         outlined
                                         dense
-                                        v-model="confirmPassword"
                                         :append-icon="
                                             show2 ? 'mdi-eye' : 'mdi-eye-off'
                                         "
@@ -556,9 +556,17 @@
                                             {{ num2 }} =
                                             <div class="txt-field">
                                                 <v-text-field
-                                                    class="txt-field"
                                                     v-model.number="
                                                         captchaEntered
+                                                    "
+                                                    class="txt-field"
+                                                    :rules="captaRules"
+                                                    :error-messages="
+                                                        saveClicked
+                                                            ? state
+                                                                ? ''
+                                                                : 'capta value is required'
+                                                            : ''
                                                     "
                                                     hide-details="auto"
                                                 ></v-text-field>
@@ -711,6 +719,7 @@
                                                     mdi-twitter
                                                 </v-icon>
                                             </v-btn>
+
                                             <v-btn
                                                 class="sam3"
                                                 dark
@@ -1220,13 +1229,13 @@ import {
     minLength,
     maxLength,
 } from 'vuelidate/lib/validators'
-import global from '@/service/global'
 import base64 from 'base-64'
+import axios from 'axios'
+import global from '@/service/global'
 import apiService from '@/service/apiService'
 import cityState from '@/assets/json/state-city.json'
 import states from '@/assets/json/states.json'
 import loader from '~/components/loader.vue'
-import axios from 'axios'
 
 export default {
     layout: 'login-header',
@@ -1242,7 +1251,7 @@ export default {
             captchaEntered: '',
             captchaAnswer: '',
             operator: '',
-            valid: false,
+            valid: true,
             show1: false,
             show2: false,
             loading: false,
@@ -1257,8 +1266,8 @@ export default {
             membershipLimit: '1 Year',
             usage: 'Unlimited',
             shopName: '',
-            states: states,
-            cityState: cityState,
+            states,
+            cityState,
             phoneNumber: '',
             email: '',
             state: '',
@@ -1321,8 +1330,13 @@ export default {
                     /^[0-9]{10}$/.test(v) ||
                     'Invalid characters entered for phone number',
             ],
-            genderList: ['Male', 'Female', 'Other'],
 
+            genderList: ['Male', 'Female', 'Other'],
+            captaRules: [
+                (v) => !!v || 'capta value is required',
+                (v) =>
+                    /^[0-9]$/.test(v) || 'Invalid Characters entered for field',
+            ],
             // .......................................
             showPassword: '',
             showConfirmPassword: '',
@@ -1441,17 +1455,17 @@ export default {
     },
     computed: {
         stateList() {
-            let sL = []
-            for (let stateName of this.states) {
+            const sL = []
+            for (const stateName of this.states) {
                 sL.push(stateName.name)
             }
             return sL
         },
         cityList() {
             console.log('cityState', this.cityState)
-            let cL = []
+            const cL = []
             if (this.state != '') {
-                for (let cityName of this.cityState) {
+                for (const cityName of this.cityState) {
                     if (cityName.state == this.state) {
                         cL.push(cityName.name)
                     }
@@ -1485,13 +1499,13 @@ export default {
         // },
 
         chooseOperator() {
-            let op = ['+', '-']
-            let index = Math.floor(Math.random() * 2)
+            const op = ['+', '-']
+            const index = Math.floor(Math.random() * 2)
             this.operator = op[index]
             this.num1 = Math.floor(Math.random() * 10 + 1)
             this.num2 = Math.floor(Math.random() * 10 + 1)
             if (this.num1 < this.num2) {
-                let temp = this.num1
+                const temp = this.num1
                 this.num1 = this.num2
                 this.num2 = temp
             }
@@ -1504,8 +1518,8 @@ export default {
             }
         },
         reset() {
-            if (this.$refs[`form`]) {
-                this.$refs[`form`].reset()
+            if (this.$refs.form) {
+                this.$refs.form.reset()
                 this.loading = false
                 this.selectedPackage = 'Package 1'
                 this.price = '500'
@@ -1525,7 +1539,7 @@ export default {
                 this.checkbox = false
                 this.errMsg2 = ''
                 this.saveClicked = false
-                this.$refs[`form`].resetValidation()
+                this.$refs.form.resetValidation()
                 this.chooseOperator()
                 this.planSelected(0)
             }
@@ -1559,22 +1573,25 @@ export default {
         saveFormData() {
             // console.log('time1', this.openingTime)
             // console.log('time2', this.closingTime)
+
             this.saveClicked = true
+            //this.$refs.form.validate()
+
             if (this.valid && this.checkbox) {
                 if (this.captchaEntered === this.captchaAnswer) {
                     this.loading = true
-                    let country = 'India'
-                    let countryCodeNo = '+91'
-                    let phone = countryCodeNo + this.phoneNumber
-                    let signupFormData = {
+                    const country = 'India'
+                    const countryCodeNo = '+91'
+                    const phone = countryCodeNo + this.phoneNumber
+                    const signupFormData = {
                         shopName: this.shopName,
                         address: this.address,
                         firstname: this.firstname,
                         lastname: this.lastname,
                         password: this.password,
-                        phone: phone,
+                        phone,
                         email: this.email,
-                        country: country,
+                        country,
                         city: this.city,
                         pinCode: this.postalCode,
                         state: this.state,
@@ -1664,7 +1681,7 @@ export default {
             } else {
                 this.$toaster.error('Please fill the required fields')
             }
-            this.regteredData.push(this.registrationData)
+            // this.regteredData.push(this.registrationData)
         },
 
         // storeListWithFilter: (dataObj, callback) => {

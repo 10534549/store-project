@@ -141,6 +141,15 @@
                                                 <!-- <v-col cols="12" sm="6" md="4">
                                                     <v-text-field
                                                         v-model="
+                                                            editedItem.states
+                                                        "
+                                                        :readonly="hasView"
+                                                        label="states"
+                                                    ></v-text-field>
+                                                </v-col> -->
+                                                <!-- <v-col cols="12" sm="6" md="4">
+                                                    <v-text-field
+                                                        v-model="
                                                             editedItem.address
                                                         "
                                                         :readonly="hasView"
@@ -169,9 +178,7 @@
                                         >
                                             Cancel
                                         </v-btn>
-                                        <v-btn colo>
-
-                                        </v-btn>
+                                        
                                         <v-btn
                                             color="blue darken-1"
                                             text
